@@ -1,10 +1,9 @@
 from fastapi import FastAPI, Depends
-import models
+from api import models
 
-from database import engine
+from api.database import engine
 
-from oauth2 import oauth2_scheme
-from routers import users, auth
+from api.routers import users, auth
 
 models.Base.metadata.create_all(bind=engine)
 

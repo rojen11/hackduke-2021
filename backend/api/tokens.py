@@ -1,7 +1,7 @@
 from jose import JWTError, jwt
-import config
+from api import config
 from datetime import datetime, timedelta
-from schemas import TokenData
+from api.schemas import TokenData
 
 
 def create_access_token(data: dict):
