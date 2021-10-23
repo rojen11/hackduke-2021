@@ -1,0 +1,90 @@
+@import "../index.scss";
+@import url("https://fonts.googleapis.com/css2?family=Festive&display=swap");
+.login {
+  width: 100vw;
+  height: 100vh;
+  background-color: lightblue;
+}
+.box {
+  background-color: rgb(253, 251, 132);
+  box-shadow: 0px 5px 10px 1px black;
+  @include center;
+  transform: translate(-50%, -70%);
+  width: 50%;
+  height: 50%;
+  border: solid white 0.5rem;
+  border-radius: 20px;
+  padding: 1rem;
+}
+.heading {
+  margin-top: 1rem;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 3rem;
+  font-family: "Bebas Neue", cursive;
+}
+.inputPlacement {
+  padding: 2rem;
+}
+
+.inputBox {
+  display: grid;
+  place-content: center;
+  margin: 1rem;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 1.3rem;
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+
+  margin-bottom: 0.5rem;
+}
+
+.inputStyle {
+  font-size: 1.2rem;
+  font-family: "IBM Plex Mono", monospace;
+
+  width: 20rem;
+  padding: 0.5rem;
+
+  border: solid gray 0.1rem;
+  border-radius: 5px;
+
+  &:focus {
+    border-color: lightblue;
+    outline: 0.25rem solid lightblue;
+  }
+}
+.buttonBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.submitButton {
+  padding: 0rem 3rem 0rem 3rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: rgb(64, 209, 253);
+  border: solid 0.2rem rgb(12, 155, 190);
+  border-radius: 5px;
+  transition-duration: 500ms;
+  &:hover {
+    background-color: rgb(64, 162, 253);
+    border-color: rgb(12, 95, 190);
+  }
+}
+
+.icon {
+  height: 2rem;
+  width: 2rem;
+}
+
+.quote {
+  @include centerHoizontal();
+  bottom: 5rem;
+  font-family: "Festive", cursive;
+  font-size: 3rem;
+  font-weight: 900;
+}
