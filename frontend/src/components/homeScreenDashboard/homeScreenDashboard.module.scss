@@ -1,51 +1,50 @@
-
 .homepageTitle {
-    font-size: 1.5rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    margin-top: 1rem;
-    letter-spacing: 0.10rem;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  margin-top: 1rem;
+  letter-spacing: 0.1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 
 .reminderHead {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .addReminderIcon {
-    cursor: pointer;
-    margin-right:0.8rem;
+  cursor: pointer;
+  margin-right: 0.8rem;
 }
 
 .seeAllWrapper {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 1.5rem;
-    margin-right: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-right: 1.5rem;
 }
 
-.seeAllLink{
-    font-family: 'Poppins', sans-serif;
-    text-decoration: underline;
-    color: brown;
+.seeAllLink {
+  font-family: "Poppins", sans-serif;
+  text-decoration: underline;
+  color: brown;
 }
 
-.profileWrapper { 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1.5rem;
+.profileWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem;
 }
 
-.profilePic { 
-    border-radius: 45%;
-    margin-right: 2rem;
+.profilePic {
+  border-radius: 45%;
+  margin-right: 2rem;
 }
 
 .medicalReport {
-    background-color: burlywood;
+  background-color: burlywood;
 }
