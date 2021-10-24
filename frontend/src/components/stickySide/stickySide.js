@@ -57,10 +57,10 @@ function StickySide(props) {
                   Foods
                 </li>
 
-                <li className={style.sidePartListItem}>
+                {/* <li className={style.sidePartListItem}>
                   <ForumIcon className={style.sidePartIcon} />
                   Community
-                </li>
+                </li> */}
 
                 <li
                   onClick={() => props.onChangePage("remainder")}
