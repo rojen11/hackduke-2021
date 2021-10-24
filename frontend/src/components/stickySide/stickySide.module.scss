@@ -1,30 +1,63 @@
+.mainSideWrapper {
+  width: 15rem;
+  position: fixed;
+  top: 0;
+}
+
 .sidePart {
-    flex:1;
-    height: calc(100vh - 40px);
-    position: sticky;
-    top: 50px;
-    background-color: whitesmoke;
+  height: 100vh;
+  //height: calc(100vh - 4rem);
+  background-color: whitesmoke;
+  position: relative;
 }
-
-.sidePartMenu {
-    margin-bottom: 2.5rem;
-}
-
 
 .sidePartList {
-    list-style: none;
-    padding: 0.5rem;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
+  list-style: none;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
 }
 
 .sidePartListItem {
-    padding: 0.4rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+  padding: 0.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  &:hover {
+    color: #b25500;
+  }
+}
+.sidePartMenuTitle {
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  font-size: 1.2rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  color: #555;
+}
+
+.dashboard {
+  padding-top: 1rem;
 }
 
 .sidePartIcon {
-    padding-right: 1rem;
+  padding-right: 1rem;
+  margin-right: 0.3rem;
+  font-size: 1.3rem !important;
+}
+
+.sidePartIconDivider {
+  width: 100%;
+}
+
+.active {
+  background-color: lightblue;
+}
+
+.logout {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
 }
