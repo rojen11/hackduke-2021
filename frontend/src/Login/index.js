@@ -12,6 +12,8 @@ function onLogin(userData, history, func, func1) {
     .then((res) => {
       history.push("/dashboard");
       func(true);
+      console.log(res);
+      //localStorage.setItem("token",res)
     })
     .catch((error) => {
       console.log(error.response);

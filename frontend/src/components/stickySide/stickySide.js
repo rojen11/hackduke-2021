@@ -40,7 +40,10 @@ function StickySide(props) {
                   Home
                 </li>
 
-                <li className={style.sidePartListItem}>
+                <li
+                  onClick={() => props.onChangePage("food")}
+                  className={`${style.sidePartListItem} ${ActiveBar("food")}`}
+                >
                   <FoodBankIcon className={style.sidePartIcon} />
                   Foods
                 </li>
