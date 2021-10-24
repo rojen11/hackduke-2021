@@ -102,20 +102,20 @@ function StickySide(props) {
             <h3 className={style.sidePartMenuTitle}>Info</h3>
             <div>
               <ul className={style.sidePartList}>
-                <li className={style.sidePartListItem}>
+                {/* <li className={style.sidePartListItem}>
                   <InfoIcon className={style.sidePartIcon} />
                   About
-                </li>
+                </li> */}
 
                 <li className={style.sidePartListItem}>
                   <NextPlanIcon className={style.sidePartIcon} />
                   What's Next?
                 </li>
 
-                <li className={style.sidePartListItem}>
+                {/* <li className={style.sidePartListItem}>
                   <BugReportIcon className={style.sidePartIcon} />
                   Report a Bug
-                </li>
+                </li> */}
 
                 <li className={style.sidePartListItem}>
                   <Divider className={style.sidePartIconDivider} />

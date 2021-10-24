@@ -3,13 +3,48 @@ import ReminderCard from "../ReminderCard/reminderCard";
 import style from "./homeScreenDashboard.module.scss";
 import AddIcon from "@mui/icons-material/Add";
 import MedicalReportTabel from "../medicalReport/medicalReportTabel";
+import Modal from "react-modal";
+import { height } from "@mui/system";
+
 
 export default function HomeScreenDashboard() {
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  Modal.setAppElement('#root');
   return (
     <div className={style.home}>
       <div className={style.reminderHead}>
         <h2 className={style.homepageTitle}>Reminders for Buddy</h2>
-        <AddIcon className={style.addReminderIcon} />
+        <button onClick={() => setIsOpen(true)}><AddIcon className={style.addReminderIcon} /></button>
+        <Modal isOpen={modalIsOpen} onRequestClose={() => setIsOpen(false)}
+          style={{
+            overlay: {
+              margin: 'auto',
+              backgroundColor: 'transparent',
+              height: '50vh',
+              width: '50vw',
+            }
+          }}
+        >
+          <h1>Add a Reminder</h1>
+          <form autoComplete={false} className={style.modalForm}>
+            <label>
+              Title:
+              <input type="text" name="title" required />
+            </label>
+            <br></br>
+            <label>
+              Date:
+              <input type="date" name="title" required />
+            </label>
+            <br></br>
+            <label>
+              Remarks:
+              <input type="text" name="remarks" required />
+            </label>
+            <br></br>
+            <input type="submit" value="Remind" />
+          </form>
+        </Modal>
       </div>
       <ReminderCard />
       <span className={style.seeAllWrapper}>
