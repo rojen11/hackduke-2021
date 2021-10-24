@@ -1,3 +1,5 @@
+@import "../../index.scss";
+@import "../RegisterLoginLayout/registerLoginLayout.module.scss";
 .reminderCards {
   width: 100%;
   display: flex;
@@ -6,6 +8,48 @@
   justify-content: space-between;
   //padding: 3rem;
   padding-top: 0rem;
+}
+
+.crossButton {
+  background-color: rgb(252, 69, 69);
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+
+  border-radius: 0px 10px 0px 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: beige;
+  border-radius: 15px;
+  padding: 1rem;
+  border: solid black 0.2rem;
+}
+
+.addButton {
+  background-color: transparent;
+  border: solid rgb(247, 217, 52) 0.2rem;
+  padding: 1rem 5rem 1rem 5rem;
+  width: 20rem;
+  height: 10rem;
+  margin: 1rem 1rem;
+  margin-left: 3rem;
+  margin-right: 3.2rem;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  transition: 250ms;
+  &:hover {
+    background-color: white;
+  }
 }
 
 .card {

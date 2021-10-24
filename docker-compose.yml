@@ -13,6 +13,7 @@ services:
       - backend
 
   backend:
+    env_file: ./docker/.env
     build:
       context: .
       dockerfile: Dockerfile
