@@ -1,0 +1,34 @@
+.header {
+    margin-top: 60px;
+  }
+  
+  .headerTitles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: #444;
+  }
+  
+  .headerTitle {
+    position: absolute;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+  }
+  
+  headerTitleRight{ 
+    position: absolute;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+  }
+  
+  .headerImg {
+    width: 100%;
+    height: 450px;
+    margin-top: 80px;
+    object-fit: cover;
+  }
+  
+  
