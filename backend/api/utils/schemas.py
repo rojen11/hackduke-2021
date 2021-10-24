@@ -35,9 +35,12 @@ class ReminderBase(BaseModel):
     due_date: datetime.datetime
     offset: int
 
-class ReminderData(ReminderBase):
+class ReminderData(BaseModel):
 
     id: int
+    title: str
+    body: str
+    due_date: datetime.datetime
 
     class Config:
         orm_mode = True
@@ -62,3 +65,10 @@ class MedicalBase(BaseModel):
     vet: str
     remind: bool
     offset: Optional[int] = None
+
+
+class FoodBase(BaseModel):
+    title: str
+    instructions: str
+    ingredients: str
+    

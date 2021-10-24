@@ -10,6 +10,7 @@ import { useState } from "react";
 import MedicalReportTabel from "./../components/medicalReport/medicalReportTabel";
 import { connect } from "react-redux";
 import ReminderCard from "./../components/ReminderCard/reminderCard";
+import MedicalReport from "../pages/MedicalReport/index.jsx";
 
 function Dashboard(props) {
   return (
@@ -21,7 +22,7 @@ function Dashboard(props) {
         </div>
         <div className={style.rightPart}>
           {props.active === "home" ? <HomeScreenDashboard /> : ""}
-          {props.active === "medical" ? <MedicalReportTabel /> : ""}
+          {props.active === "medical" ? <MedicalReport/> : ""}
           {props.active === "remainder" ? <ReminderCard /> : ""}
         </div>
       </div>

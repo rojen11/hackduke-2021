@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Date, Boolean
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Date, Boolean, Text
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
@@ -62,3 +62,18 @@ class Medication(Base):
     
     # relationship
     user = relationship("User")
+
+class Food(Base):
+    __tablename__ = "foods"
+
+    id = Column(Integer, primary_key=True, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    author_id = Column(Integer, ForeignKey("users.id"))
+    ingredients = Column(Text)
+    instructions = Column(Text)
+    title = Column(String)
+
+    # relationship
+    user = relationship("User")
+

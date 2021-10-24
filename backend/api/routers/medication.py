@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, BackgroundTasks
+from typing import Optional
 from sqlalchemy.orm import Session
 from api.utils import schemas, sms
 from api.utils.oauth2 import get_current_user
@@ -38,3 +39,15 @@ def add_medication(
         backgroundTasks.add_task(sms.schedule_sms, request.offset, user.phone_no, body)
 
     return med
+
+
+@router.get("/")
+def get_medications(limit: Optional[int] = -1, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
+    query = db.query(models.Medication).join(models.User).filter(models.User.email == current_user.email)
+    if (limit != -1):
+        medications = query.limit(limit).all()
+    else:
+        medications = query.all()
+
+    return medications
+        
