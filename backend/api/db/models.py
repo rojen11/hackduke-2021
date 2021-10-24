@@ -27,4 +27,18 @@ class Reminder(Base):
 
     # relationship
     user = relationship("User")
-    
+
+
+class PetProfile(Base):
+    __tablename__ = "pet_profile"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"))
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    pet_name = Column(String)
+    pet_type = Column(String)
+    pet_profile_picture = Column(String)
+
+    # relationship
+    user = relationship("User")

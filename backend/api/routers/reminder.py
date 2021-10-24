@@ -25,7 +25,9 @@ def get_reminders(
     return reminders
 
 
-@router.post("/create", status_code=status.HTTP_201_CREATED, response_model=schemas.ReminderData)
+@router.post(
+    "/create", status_code=status.HTTP_201_CREATED, response_model=schemas.ReminderData
+)
 def create_reminder(
     request: schemas.ReminderBase,
     current_user: models.User = Depends(get_current_user),
@@ -44,5 +46,3 @@ def create_reminder(
     db.commit()
     db.refresh(reminder)
     return reminder
-
-

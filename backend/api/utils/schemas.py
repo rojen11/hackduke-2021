@@ -38,3 +38,16 @@ class ReminderData(ReminderBase):
 
     class Config:
         orm_mode = True
+
+
+# pet 
+class PetBase(BaseModel):
+    pet_name: str
+    pet_type: str
+
+class PetData(PetBase):
+
+    id: int
+
+    class Config:
+        orm_mode = True
