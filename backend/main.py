@@ -5,14 +5,15 @@ from api.db import models
 
 from api.db.database import engine
 
-from api.routers import users, auth
+from api.routers import users, auth, reminder
 
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI(root_path="/api")
+app = FastAPI()
 
 app.include_router(auth.router)
 app.include_router(users.router)
+app.include_router(reminder.router)
 
 
 if __name__ == "__main__":

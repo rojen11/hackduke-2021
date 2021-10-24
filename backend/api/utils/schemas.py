@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
+import datetime
 
 
 class UserBase(BaseModel):
@@ -23,3 +24,17 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     email: Optional[str] = None
+
+
+# Reminders
+class ReminderBase(BaseModel):
+    title: str
+    body: str
+    due_date: datetime.datetime
+
+class ReminderData(ReminderBase):
+
+    id: int
+
+    class Config:
+        orm_mode = True
