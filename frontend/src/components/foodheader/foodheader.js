@@ -4,8 +4,7 @@ export default function FoodHeader() {
     return (
         <div className={style.header}>
             <div className={style.headerTitles}>
-                <span className={style.headerTitle}>DELICIOUS DISH FOR YOUR FURRY FRIEND</span>
-                <span className={style.headerTitleRight}>UPLOAD YOUR RECIPE</span>
+                <span className={style.headerTitle}>GOOD FOODS AND BAD FOODS FOR YOUR FURRY FRIEND</span>
             </div>
             <img
                 className={style.headerImg}
