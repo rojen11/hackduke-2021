@@ -3,12 +3,14 @@ from typing import Optional
 import datetime
 
 
+
 class UserBase(BaseModel):
     email: str
 
 
 class UserCreate(UserBase):
     password: str
+    phone_no: str
 
 
 class User(UserBase):
@@ -31,6 +33,7 @@ class ReminderBase(BaseModel):
     title: str
     body: str
     due_date: datetime.datetime
+    offset: int
 
 class ReminderData(ReminderBase):
 
@@ -51,3 +54,11 @@ class PetData(PetBase):
 
     class Config:
         orm_mode = True
+
+class MedicalBase(BaseModel):
+    last_date: datetime.datetime
+    next_date: datetime.datetime
+    medication: str
+    vet: str
+    remind: bool
+    offset: Optional[int] = None

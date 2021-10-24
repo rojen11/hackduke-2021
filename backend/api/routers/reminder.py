@@ -1,10 +1,10 @@
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, status, BackgroundTasks
 from typing import List
 from sqlalchemy.orm import Session
 from api.db.database import get_db
 from api.db import models
 from api.utils.oauth2 import get_current_user
-from api.utils import schemas
+from api.utils import schemas, sms
 
 
 router = APIRouter(tags=["Reminder"], prefix="/reminder")
@@ -30,6 +30,7 @@ def get_reminders(
 )
 def create_reminder(
     request: schemas.ReminderBase,
+    background_tasks: BackgroundTasks,
     current_user: models.User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
@@ -45,4 +46,14 @@ def create_reminder(
     db.add(reminder)
     db.commit()
     db.refresh(reminder)
+
+    # schedule sms
+    phone = user.phone_no
+
+    print(phone)
+    if phone is not None:
+        background_tasks.add_task(
+            sms.schedule_sms, request.offset, phone, reminder.body
+        )
+
     return reminder
