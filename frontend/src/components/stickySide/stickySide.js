@@ -24,7 +24,10 @@ function StickySide(props) {
       <div className={style.sidePart}>
         <div className={style.sidePartMain}>
           <div className={style.sidePartMenu}>
-            <h3 className={`${style.sidePartMenuTitle} ${style.dashboard}`}>
+            <h3
+              className={`${style.sidePartMenuTitle} ${style.dashboard}`}
+              style={{ marginBottom: 25 }}
+            >
               Dashboard
             </h3>
             <div>

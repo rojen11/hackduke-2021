@@ -25,7 +25,6 @@ function Dashboard(props) {
           {props.active === "remainder" ? <ReminderCard /> : ""}
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
