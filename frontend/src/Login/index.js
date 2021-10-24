@@ -12,7 +12,7 @@ function onLogin(userData, history, func, func1) {
     .then((res) => {
       history.push("/dashboard");
       func(true);
-      console.log(res);
+      localStorage.setItem("token", res.data.access_token);
       //localStorage.setItem("token",res)
     })
     .catch((error) => {
@@ -27,8 +27,8 @@ export function Login() {
   const [userData, setUserData] = useState({ username: "", password: "" });
   let input = [
     {
-      label: "Email",
-      placeholder: "Enter Your Email",
+      label: "Username",
+      placeholder: "Enter Your Username",
       password: false,
       onChange: (val) => setUserData({ ...userData, username: val }),
     },

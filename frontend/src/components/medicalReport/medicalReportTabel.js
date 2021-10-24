@@ -2,7 +2,9 @@ import { Divider } from "@mui/material";
 import React from "react";
 import style from "./medicalReport.module.scss";
 
-export default function MedicalReportTabel() {
+export default function MedicalReportTabel(props) {
+  const { reports } = props;
+
   return (
     <table class={style.medTable}>
       <thead className={style.medTableHead}>
@@ -15,40 +17,18 @@ export default function MedicalReportTabel() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>20 Oct, 2021</td>
-          <td>Albendazole</td>
-          <td>Dr. Lorem Ipsum</td>
-          <td>20 Jan, 2022</td>
-          <td></td>
-        </tr>
-        <Divider className={style.tableDivider} />
-
-        <tr>
-          <td>13 Aug, 2021</td>
-          <td>DHPP Vaccine</td>
-          <td>Dr. Lorem Ipsum</td>
-          <td>01 Sept, 2022</td>
-          <td></td>
-        </tr>
-        <Divider className={style.tableDivider} />
-
-        <tr>
-          <td>09 Jul, 2021</td>
-          <td>Anti Rabies Injection</td>
-          <td>Animal Pet Hospital</td>
-          <td>15 Jul, 2022</td> <td></td>
-          <td></td>
-        </tr>
-        <Divider className={style.tableDivider} />
-
-        <tr>
-          <td>01 Jul, 2020</td>
-          <td>Anti Rabies Injection</td>
-          <td>Animal Pet Hospital</td>
-          <td>10 Jul, 2021</td> <td></td>
-          <td></td>
-        </tr>
+        {reports.map((r) => (
+          <React.Fragment key={r.id}>
+            <tr>
+              <td>{r.last_date}</td>
+              <td>{r.medication}</td>
+              <td>{r.vet}</td>
+              <td>{r.next_date}</td>
+              <td>{r.remind ? "Yes" : "No"}</td>
+            </tr>
+            <Divider className={style.tableDivider} />
+          </React.Fragment>
+        ))}
       </tbody>
     </table>
   );
