@@ -26,7 +26,11 @@ function onPostReminder(data) {
 export default function ReminderCard() {
   useEffect(() => {
     axios
-      .get("/api/remainder")
+      .get("/api/reminder", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
       .then((res) => console.log(res))
       .catch((error) => console.log(error.response));
   }, []);

@@ -6,9 +6,8 @@ import axios from "axios";
 function onRegister(userData, history, func, func1) {
   axios
     .post("/api/register", userData)
-    .then(() => {
+    .then((res) => {
       history.push("/login");
-      func1();
       func(true);
     })
     .catch((error) => {
@@ -19,11 +18,15 @@ function onRegister(userData, history, func, func1) {
 
 export function Register() {
   let history = useHistory();
-  const [userData, setUserData] = useState({ email: "", password: "" });
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+    phone_no: "",
+  });
   let input = [
     {
-      label: "Email",
-      placeholder: "Enter Your Email",
+      label: "Username",
+      placeholder: "Enter Your Username",
       password: false,
       onChange: (val) => setUserData({ ...userData, email: val }),
     },
@@ -32,6 +35,12 @@ export function Register() {
       placeholder: "Enter Your Password",
       password: true,
       onChange: (val) => setUserData({ ...userData, password: val }),
+    },
+    {
+      label: "Phone Number",
+      placeholder: "Enter Your Phone Number",
+      password: true,
+      onChange: (val) => setUserData({ ...userData, phone_no: val }),
     },
   ];
   return (
