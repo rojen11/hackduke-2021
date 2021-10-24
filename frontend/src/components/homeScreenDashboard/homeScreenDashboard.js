@@ -36,6 +36,11 @@ export default function HomeScreenDashboard() {
               Date:
               <input type="date" name="title" required />
             </label>
+
+            <label>
+              Time:
+              <input type="time" name="title" required />
+            </label>
             <br></br>
             <label>
               Remarks:
