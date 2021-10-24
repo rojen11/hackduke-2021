@@ -1,9 +1,10 @@
 import React from 'react'
+import FoodHeader from '../components/foodheader/foodheader.js'
 
 export default function Food() {
     return (
         <div>
-            <h1>Food</h1>
+            <FoodHeader/>   
         </div>
     )
 }
