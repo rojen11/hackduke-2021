@@ -1,15 +1,22 @@
 from fastapi import FastAPI, Depends
-from api import models
+import uvicorn
 
-from api.database import engine
+from api.db import models
 
-from api.routers import users, auth
+from api.db.database import engine
+
+from api.routers import users, auth, reminder, petprofile, medication
 
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI(root_path="/api")
+app = FastAPI()
 
 app.include_router(auth.router)
 app.include_router(users.router)
+app.include_router(reminder.router)
+app.include_router(petprofile.router)
+app.include_router(medication.router)
 
 
+if __name__ == "__main__":
+    uvicorn.run("main:app", port=8000, reload=True, log_level="debug")
