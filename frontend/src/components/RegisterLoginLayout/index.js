@@ -1,19 +1,20 @@
-import style from "./login.module.scss";
+import style from "./registerLoginLayout.module.scss";
 import { Pets } from "@material-ui/icons";
 
-export function Login() {
+export default function RegisterLoginLayout({ title, input }) {
   return (
     <div className={`${style.login}`} style={{ zIndex: 1 }}>
       <div className={`${style.box}`} style={{ zIndex: 5 }}>
         <Pets className={style.mainIcon} style={{ fontSize: 70, width: 200 }} />
-        <div className={`${style.heading}`}>Login</div>
+        <div className={`${style.heading}`}>{title}</div>
         <div className={`${style.inputPlacement}`}>
-          <InputField label="Email: " placeholder="Enter your email" />
-          <InputField
-            label="Password: "
-            placeholder="Enter your password"
-            password={true}
-          />
+          {input.map((e) => (
+            <InputField
+              label={e.label}
+              placeholder={e.placeholder}
+              password={e.password}
+            />
+          ))}
           <div className={style.buttonBox}>
             <button className={style.submitButton}>
               <svg

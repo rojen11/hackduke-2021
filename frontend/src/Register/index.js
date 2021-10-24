@@ -1,3 +1,5 @@
+import RegisterLoginLayout from "../components/RegisterLoginLayout";
+
 export function Register() {
-  return <div className="bg">Register</div>;
+  return <RegisterLoginLayout title="Register" input={[]} />;
 }

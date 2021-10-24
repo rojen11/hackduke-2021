@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Login } from "./Login";
-import { Register } from "./Register/index";
+import { Register } from "./Register";
+import Dashboard from "./Dashboard";
 
 export function PageLoader() {
   return (
@@ -8,6 +9,7 @@ export function PageLoader() {
       <Switch>
         <Route path="/register" component={Register} />
         <Route exact path={["/login", "/"]} component={Login} />
+        <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
     </Router>
   );
