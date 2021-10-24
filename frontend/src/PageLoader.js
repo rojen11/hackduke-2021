@@ -7,9 +7,9 @@ export function PageLoader() {
   return (
     <Router>
       <Switch>
+        <Route path="/dashboard" component={Dashboard} />
         <Route path="/register" component={Register} />
         <Route exact path={["/login", "/"]} component={Login} />
-        <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
     </Router>
   );

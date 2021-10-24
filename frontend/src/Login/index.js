@@ -1,55 +1,49 @@
-import style from "./login.module.scss";
-import { Pets } from "@material-ui/icons";
+import axios from "axios";
+import { useState } from "react";
+import { useHistory } from "react-router";
+import RegisterLoginLayout from "../components/RegisterLoginLayout";
 
-export function Login() {
-  return (
-    <div className={`${style.login}`} style={{ zIndex: 1 }}>
-      <div className={`${style.box}`} style={{ zIndex: 5 }}>
-        <Pets className={style.mainIcon} style={{ fontSize: 70, width: 200 }} />
-        <div className={`${style.heading}`}>Login</div>
-        <div className={`${style.inputPlacement}`}>
-          <InputField label="Email: " placeholder="Enter your email" />
-          <InputField
-            label="Password: "
-            placeholder="Enter your password"
-            password={true}
-          />
-          <div className={style.buttonBox}>
-            <button className={style.submitButton}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className={style.icon}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className={style.quote}>"Pets are the beauty of the world"</div>
-    </div>
-  );
+function onLogin(userData, history, func, func1) {
+  var formData = new FormData();
+  formData.append("username", userData.username);
+  formData.append("password", userData.password);
+  axios
+    .post("/api/login", formData)
+    .then((res) => {
+      history.push("/dashboard");
+      func(true);
+    })
+    .catch((error) => {
+      console.log(error.response);
+      func1("Invalid Credientials");
+      func(false);
+    });
 }
 
-function InputField({ label, placeholder, password }) {
+export function Login() {
+  let history = useHistory();
+  const [userData, setUserData] = useState({ username: "", password: "" });
+  let input = [
+    {
+      label: "Email",
+      placeholder: "Enter Your Email",
+      password: false,
+      onChange: (val) => setUserData({ ...userData, username: val }),
+    },
+    {
+      label: "Password",
+      placeholder: "Enter Your Password",
+      password: true,
+      onChange: (val) => setUserData({ ...userData, password: val }),
+    },
+  ];
   return (
-    <div className={`${style.inputBox}`}>
-      <div className={`${style.label}`}>
-        <label>{label}</label>
-      </div>
-      <input
-        className={`${style.inputStyle}`}
-        placeholder={placeholder}
-        type={password ? "password" : ""}
-      />
-    </div>
+    <RegisterLoginLayout
+      title="Login"
+      input={input}
+      quote="Pets are the beauty of the world"
+      buttonName="Register"
+      onClick={(func, func1) => onLogin(userData, history, func, func1)}
+    />
   );
 }
