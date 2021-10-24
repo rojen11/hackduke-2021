@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
 import ReminderCard from "../ReminderCard/reminderCard";
 import style from "./homeScreenDashboard.module.scss";
 import AddIcon from "@mui/icons-material/Add";
 import MedicalReportTabel from "../medicalReport/medicalReportTabel";
 
 export default function HomeScreenDashboard() {
+  const [reports, setReports] = useState([]);
+
+  useEffect(() => {
+    // Todo: autorization header
+    Axios.get("/api/medication/?limit=3", {
+      headers: {
+        Authorization: ``,
+      },
+    })
+      .then((res) => setReports([...res.data]))
+      .catch((e) => console.log(e));
+  }, []);
+
   return (
     <div className={style.home}>
       <div className={style.reminderHead}>
@@ -46,7 +60,7 @@ export default function HomeScreenDashboard() {
       </div>
       <div className={style.medicalReport}>
         <h2 className={style.homepageTitle}>Buddy's Medical Report</h2>
-        <MedicalReportTabel />
+        <MedicalReportTabel reports={reports} />
         <span className={style.seeAllWrapper}>
           <a href="#" className={style.seeAllLink}>
             See all medical history
