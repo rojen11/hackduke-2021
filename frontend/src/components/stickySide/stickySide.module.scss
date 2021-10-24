@@ -1,19 +1,20 @@
+.mainSideWrapper {
+    position: fixed;
+    width: 15rem;
+}
+
 .sidePart {
-    flex:1;
-    height: calc(100vh - 40px);
-    position: sticky;
-    top: 50px;
+    display: flex;
+    height: calc(100vh - 4rem);
     background-color: whitesmoke;
+    position: relative;
 }
-
-.sidePartMenu {
-    margin-bottom: 2.5rem;
-}
-
 
 .sidePartList {
     list-style: none;
-    padding: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
     font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
 }
@@ -23,8 +24,41 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    &:hover {
+        color: #B25500;
+    }
+    
+}
+.sidePartMenuTitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    color: #555;
+}
+
+.dashboard { 
+    padding-top: 1rem;
 }
 
 .sidePartIcon {
     padding-right: 1rem;
+    margin-right: 0.3rem;
+    font-size: 1.3rem !important;
 }
+
+.sidePartIconDivider {
+    width: 100%;
+}
+
+.active {
+    background-color:lightblue;
+}
+
+.logout {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
+
