@@ -11,6 +11,7 @@ import MedicalReportTabel from "./../components/medicalReport/medicalReportTabel
 import { connect } from "react-redux";
 import ReminderCard from "./../components/ReminderCard/reminderCard";
 import MedicalReport from "../pages/MedicalReport/index.jsx";
+import Food from "./../Food/food";
 
 function Dashboard(props) {
   return (
@@ -22,8 +23,9 @@ function Dashboard(props) {
         </div>
         <div className={style.rightPart}>
           {props.active === "home" ? <HomeScreenDashboard /> : ""}
-          {props.active === "medical" ? <MedicalReport/> : ""}
+          {props.active === "medical" ? <MedicalReport /> : ""}
           {props.active === "remainder" ? <ReminderCard /> : ""}
+          {props.active === "food" ? <Food /> : ""}
         </div>
       </div>
     </div>

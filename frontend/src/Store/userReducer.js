@@ -1,4 +1,4 @@
-let initState = [];
+let initState = {};
 
 export const userReducer = (state = initState, action) => {
   let modifyState = { ...state };

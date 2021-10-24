@@ -5,8 +5,6 @@ import style from "./medicalReport.module.scss";
 export default function MedicalReportTabel(props) {
   const { reports } = props;
 
-    
-
   return (
     <table class={style.medTable}>
       <thead className={style.medTableHead}>
@@ -31,8 +29,6 @@ export default function MedicalReportTabel(props) {
             <Divider className={style.tableDivider} />
           </React.Fragment>
         ))}
-
-    
       </tbody>
     </table>
   );
