@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import style from "./reminderCard.module.scss";
 import axios from "axios";
+import TextField from "@mui/material/TextField";
 
 let cardData = [
   ["Take Buddy to Vet", "on October 28, 2021", "Annual Check-up"],
@@ -26,11 +27,7 @@ function onPostReminder(data) {
 export default function ReminderCard() {
   useEffect(() => {
     axios
-      .get("/api/reminder", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      })
+      .get("/api/reminder/")
       .then((res) => console.log(res))
       .catch((error) => console.log(error.response));
   }, []);
@@ -51,10 +48,17 @@ export default function ReminderCard() {
             placeholder="Enter Your Title"
             onChange={(val) => setData({ ...data, title: val })}
           />
-          <InputField
-            label="Date"
-            placeholder="Enter Your Date"
+          <TextField
+            style={{ marginTop: 10 }}
             onChange={(val) => setData({ ...data, due_date: val })}
+            id="datetime-local"
+            label="Date"
+            type="datetime-local"
+            defaultValue="2017-05-24T10:30"
+            sx={{ width: 250 }}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           <InputField
             label="Description"
