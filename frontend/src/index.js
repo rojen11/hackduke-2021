@@ -4,9 +4,9 @@ import "./index.scss";
 import App from "./App";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import { userReducer } from "./Store/userReducer";
+import { navigateReducer } from "./Store/nagivateReducer";
 
-let store = createStore(userReducer);
+let store = createStore(navigateReducer);
 
 ReactDOM.render(
   <React.StrictMode>

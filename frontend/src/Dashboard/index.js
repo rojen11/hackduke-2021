@@ -6,8 +6,12 @@ import Topbar from "../components/topbar/Topbar.js";
 import style from "./dashboard.module.scss";
 import StickyBox from "react-sticky-box";
 import Footer from "../components/footer/footer.js";
+import { useState } from "react";
+import MedicalReportTabel from "./../components/medicalReport/medicalReportTabel";
+import { connect } from "react-redux";
+import ReminderCard from "./../components/ReminderCard/reminderCard";
 
-function Dashboard() {
+function Dashboard(props) {
   return (
     <div className={style.App}>
       <Topbar />
@@ -16,7 +20,9 @@ function Dashboard() {
           <StickySide />
         </div>
         <div className={style.rightPart}>
-          <HomeScreenDashboard />
+          {props.active === "home" ? <HomeScreenDashboard /> : ""}
+          {props.active === "medical" ? <MedicalReportTabel /> : ""}
+          {props.active === "remainder" ? <ReminderCard /> : ""}
         </div>
       </div>
       <Footer />
@@ -24,4 +30,10 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+  return {
+    active: state.active,
+  };
+};
+
+export default connect(mapStateToProps)(Dashboard);
