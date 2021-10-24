@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import Axios from "../../utils/axios_token";
 import ReminderCard from "../ReminderCard/reminderCard";
 import style from "./homeScreenDashboard.module.scss";
 import AddIcon from "@mui/icons-material/Add";
@@ -14,11 +14,7 @@ export default function HomeScreenDashboard() {
 
   useEffect(() => {
     // Todo: autorization header
-    Axios.get("/api/medication/?limit=3", {
-      headers: {
-        Authorization: ``,
-      },
-    })
+    Axios.get("/api/medication/?limit=3")
       .then((res) => setReports([...res.data]))
       .catch((e) => console.log(e));
   }, []);
