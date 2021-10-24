@@ -14,13 +14,18 @@ router = APIRouter(tags=["Reminder"], prefix="/reminder")
     "/", response_model=List[schemas.ReminderData], status_code=status.HTTP_200_OK
 )
 def get_reminders(
-    current_user: models.User = Depends(get_current_user), limit: Optional[int] = -1, db: Session = Depends(get_db)
+    current_user: models.User = Depends(get_current_user),
+    limit: Optional[int] = -1,
+    db: Session = Depends(get_db),
 ):
-    reminders = db.query(models.Reminder).join(models.User).filter(models.User.email == current_user.email)
-    
-    if (limit != -1): 
-        reminders = reminders.limit(limit)
+    reminders = (
+        db.query(models.Reminder)
+        .join(models.User)
+        .filter(models.User.email == current_user.email)
+    )
 
+    if limit != -1:
+        reminders = reminders.limit(limit)
 
     return reminders.all()
 
@@ -52,8 +57,7 @@ def create_reminder(
 
     print(phone)
     if phone is not None:
-        background_tasks.add_task(
-            sms.schedule_sms, request.offset, phone, reminder.body
-        )
+        body = f"{reminder.title} : {reminder.body}"
+        background_tasks.add_task(sms.schedule_sms, request.offset, phone, body)
 
     return reminder

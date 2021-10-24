@@ -6,14 +6,20 @@ import Topbar from "../components/topbar/Topbar.js";
 import style from "./dashboard.module.scss";
 import StickyBox from "react-sticky-box";
 import Footer from "../components/footer/footer.js";
-import { useState } from "react";
 import MedicalReportTabel from "./../components/medicalReport/medicalReportTabel";
 import { connect } from "react-redux";
 import ReminderCard from "./../components/ReminderCard/reminderCard";
 import MedicalReport from "../pages/MedicalReport/index.jsx";
 import Food from "./../Food/food";
+import { useHistory } from "react-router";
 
 function Dashboard(props) {
+  const history = useHistory();
+
+  // if (!localStorage.getItem("token")) {
+  //   history.push("/login");
+  // }
+
   return (
     <div className={style.App}>
       <Topbar />

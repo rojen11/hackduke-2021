@@ -14,11 +14,20 @@ import { Home } from "@material-ui/icons";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import { connect } from "react-redux";
 import * as ActionType from "../../Store/actionType";
+import { useHistory } from 'react-router';
 
 function StickySide(props) {
   function ActiveBar(s) {
     return props.active === s ? style.active : "";
   }
+
+  const history = useHistory();
+
+  function handleLogout() {
+    localStorage.clear();
+    history.push("/login");    
+  }
+
   return (
     <div className={style.mainSideWrapper}>
       <div className={style.sidePart}>
@@ -133,7 +142,7 @@ function StickySide(props) {
                 <li className={style.sidePartListItem}>
                   <Divider className={style.sidePartIconDivider} />
                 </li>
-                <li className={style.sidePartListItem}>
+                <li className={style.sidePartListItem} onClick={handleLogout}>
                   <LogoutIcon className={style.sidePartIcon} />
                   Log out
                 </li>

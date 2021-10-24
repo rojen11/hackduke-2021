@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import style from "./reminderCard.module.scss";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
+// import  form 
+
 
 let cardData = [
   ["Take Buddy to Vet", "on October 28, 2021", "Annual Check-up"],
@@ -18,8 +20,10 @@ let cardData = [
 ];
 
 function onPostReminder(data) {
-  axios.post("/api/remainder/create", { ...data, offset: 10 }).then((res) => {
-    console.log(res);
+  const now = Date.now();
+  const offset = Math.floor((new Date(data["due_date"]) - now) / 1000);
+
+  axios.post("/api/reminder/create", { ...data, offset: offset }).then((res) => {
     cardData.push([data.title, data.due_date, data.description]);
   });
 }
@@ -50,7 +54,8 @@ export default function ReminderCard() {
           />
           <TextField
             style={{ marginTop: 10 }}
-            onChange={(val) => setData({ ...data, due_date: val })}
+            // onChange={val => console.log(val)}
+            onChange={(e) => setData({ ...data, due_date: e.target.value })}
             id="datetime-local"
             label="Date"
             type="datetime-local"
