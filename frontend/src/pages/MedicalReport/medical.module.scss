@@ -1,0 +1,19 @@
+.addButton {
+  background-color: transparent;
+  border: solid rgb(247, 217, 52) 0.2rem;
+  padding: 1rem 5rem 1rem 5rem;
+  margin: 1rem 1rem;
+  margin-left: 3rem;
+  margin-right: 3.2rem;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  transition: 250ms;
+  position: fixed;
+  bottom: 0px;
+  right: 0;
+  &:hover {
+    background-color: white;
+  }
+}

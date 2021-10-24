@@ -13,7 +13,7 @@ export default function Topbar() {
                 <div>
                     <PetsTwoTone/>
                 </div>
-                <div className={style.topTitle}>Dashboard</div>
+                <div className={style.topTitle}>The Furry Buddy</div>
                 <div className={style.topBarRight}>
                     <div className={style.topBarRight}>
                         <NotificationsNone />

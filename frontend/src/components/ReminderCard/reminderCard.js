@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import style from "./reminderCard.module.scss";
 import axios from "axios";
+import TextField from "@mui/material/TextField";
+// import  form 
+
 
 let cardData = [
   ["Take Buddy to Vet", "on October 28, 2021", "Annual Check-up"],
@@ -17,8 +20,10 @@ let cardData = [
 ];
 
 function onPostReminder(data) {
-  axios.post("/api/remainder/create", { ...data, offset: 10 }).then((res) => {
-    console.log(res);
+  const now = Date.now();
+  const offset = Math.floor((new Date(data["due_date"]) - now) / 1000);
+
+  axios.post("/api/reminder/create", { ...data, offset: offset }).then((res) => {
     cardData.push([data.title, data.due_date, data.description]);
   });
 }
@@ -26,12 +31,8 @@ function onPostReminder(data) {
 export default function ReminderCard() {
   useEffect(() => {
     axios
-      .get("/api/reminder", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      })
-      .then((res) => console.log(res))
+      .get("/api/reminder/")
+      .then((res) => (cardData = res.data))
       .catch((error) => console.log(error.response));
   }, []);
   const [show, setShow] = useState(false);
@@ -51,10 +52,17 @@ export default function ReminderCard() {
             placeholder="Enter Your Title"
             onChange={(val) => setData({ ...data, title: val })}
           />
-          <InputField
+          <TextField
+            style={{ marginTop: 10 }}
+            onChange={(e) => setData({ ...data, due_date: e.target.value })}
+            id="datetime-local"
             label="Date"
-            placeholder="Enter Your Date"
-            onChange={(val) => setData({ ...data, due_date: val })}
+            type="datetime-local"
+            defaultValue="2017-05-24T10:30"
+            sx={{ width: 250 }}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           <InputField
             label="Description"
