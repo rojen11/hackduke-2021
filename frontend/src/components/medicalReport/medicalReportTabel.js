@@ -1,5 +1,5 @@
 import { Divider } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import style from "./medicalReport.module.scss";
 
 export default function MedicalReportTabel(props) {

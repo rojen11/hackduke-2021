@@ -18,8 +18,7 @@ let cardData = [
 ];
 
 function onPostReminder(data) {
-  axios.post("/api/remainder/create", { ...data, offset: 10 }).then((res) => {
-    console.log(res);
+  axios.post("/api/reminder/create", { ...data, offset: 10 }).then((res) => {
     cardData.push([data.title, data.due_date, data.description]);
   });
 }
@@ -28,7 +27,7 @@ export default function ReminderCard() {
   useEffect(() => {
     axios
       .get("/api/reminder/")
-      .then((res) => console.log(res))
+      .then((res) => (cardData = res.data))
       .catch((error) => console.log(error.response));
   }, []);
   const [show, setShow] = useState(false);
@@ -50,7 +49,7 @@ export default function ReminderCard() {
           />
           <TextField
             style={{ marginTop: 10 }}
-            onChange={(val) => setData({ ...data, due_date: val })}
+            onChange={(e) => setData({ ...data, due_date: e.target.value })}
             id="datetime-local"
             label="Date"
             type="datetime-local"
