@@ -41,6 +41,7 @@ def create_reminder(
 ):
     new_reminder = request.copy()
     user = db.query(models.User).filter(models.User.email == current_user.email).first()
+    print(user.email)
     reminder = models.Reminder(
         title=new_reminder.title,
         body=new_reminder.body,

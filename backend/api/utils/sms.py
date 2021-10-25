@@ -20,6 +20,7 @@ def job(message_to, message_body):
 
 
 def schedule_sms(time, message_to, message_body):
+    print(time)
     if not account_sid and not auth_token:
         return
 

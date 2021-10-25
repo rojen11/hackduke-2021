@@ -1,40 +1,29 @@
 import { useEffect, useState } from "react";
 import style from "./reminderCard.module.scss";
-import axios from "axios";
+import axios from "../../utils/axios_token";
 import TextField from "@mui/material/TextField";
-// import  form 
-
-
-let cardData = [
-  ["Take Buddy to Vet", "on October 28, 2021", "Annual Check-up"],
-  [
-    "Grooming Day",
-    "on November 03, 2021",
-    "Appointment at Pet's Grooming Center at 10AM",
-  ],
-  [
-    "Playdate with Tucker",
-    "on November 28, 2021",
-    "Time to meet my best friend Tucker :D",
-  ],
-];
-
-function onPostReminder(data) {
-  const now = Date.now();
-  const offset = Math.floor((new Date(data["due_date"]) - now) / 1000);
-
-  axios.post("/api/reminder/create", { ...data, offset: offset }).then((res) => {
-    cardData.push([data.title, data.due_date, data.description]);
-  });
-}
+// import  form
 
 export default function ReminderCard() {
+  const [cardData, setcardData] = useState([]);
+  function onPostReminder(data) {
+    const now = Date.now();
+    const offset = Math.floor((new Date(data["due_date"]) - now) / 1000);
+
+    axios
+      .post("/api/reminder/create", { ...data, offset: offset })
+      .then((res) => {
+        setcardData([...cardData, res.data]);
+      });
+  }
+
   useEffect(() => {
     axios
       .get("/api/reminder/")
-      .then((res) => (cardData = res.data))
+      .then((res) => setcardData(res.data))
       .catch((error) => console.log(error.response));
   }, []);
+
   const [show, setShow] = useState(false);
   const [data, setData] = useState({ title: "", due_date: "", body: "" });
   return (
@@ -78,7 +67,7 @@ export default function ReminderCard() {
         </div>
       )}
       {cardData.map((e) => (
-        <RemainderCard title={e[0]} date={e[1]} description={e[2]} />
+        <RemainderCard title={e.title} date={e.due_date} description={e.body} />
       ))}
     </div>
   );

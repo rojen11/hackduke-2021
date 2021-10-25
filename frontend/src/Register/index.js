@@ -39,7 +39,7 @@ export function Register() {
     {
       label: "Phone Number",
       placeholder: "Enter Your Phone Number",
-      password: true,
+      password: false,
       onChange: (val) => setUserData({ ...userData, phone_no: val }),
     },
   ];
